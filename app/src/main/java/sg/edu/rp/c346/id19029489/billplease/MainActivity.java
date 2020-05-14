@@ -42,22 +42,26 @@ public class MainActivity extends AppCompatActivity {
 
                 Double totalbill = 0.00;
 
-                if (bill.getText().toString().length() > 0 && pax.getText().toString().length() > 0) {
+                if (amt.getText().toString().length() > 0 && pax.getText().toString().length() > 0) {
                     if (svs.isChecked() == false && gst.isChecked() == false) {
-                        totalbill = Double.parseDouble(bill.getText().toString());
+                        totalbill = Double.parseDouble(amt.getText().toString());
                     } else if (svs.isChecked() == true && gst.isChecked() == false) {
-                        totalbill = Double.parseDouble(bill.getText().toString()) * (1.1);
+                        totalbill = Double.parseDouble(amt.getText().toString()) * (1.1);
                     } else if (svs.isChecked() == false && gst.isChecked() == true) {
-                        totalbill = Double.parseDouble(bill.getText().toString()) * (1.07);
+                        totalbill = Double.parseDouble(amt.getText().toString()) * (1.07);
                     } else if (svs.isChecked() == true && gst.isChecked() == true) {
-                        totalbill = Double.parseDouble(bill.getText().toString()) * (1.17);
+                        totalbill = Double.parseDouble(amt.getText().toString()) * (1.17);
                     }
-                } else if (bill.getText().toString().length() == 0 && pax.getText().toString().length() == 0) {
-                    Toast.makeText(MainActivity.this, "Amount and Number of People is required", Toast.LENGTH_LONG).show();
-                } else if (bill.getText().toString().length() == 0) {
-                    Toast.makeText(MainActivity.this, "Amount is required", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "Number of People is required", Toast.LENGTH_LONG).show();
+                } else{
+                    if (amt.getText().toString().length() == 0) {
+                        Toast.makeText(MainActivity.this, "Amount is required", Toast.LENGTH_LONG).show();
+                    }
+                    if (pax.getText().toString().length() == 0) {
+                        Toast.makeText(MainActivity.this, "Number of People is required", Toast.LENGTH_LONG).show();
+                    }
+                    if (amt.getText().toString().length() == 0 && pax.getText().toString().length() == 0) {
+                        Toast.makeText(MainActivity.this, "Amount and Number of People is required", Toast.LENGTH_LONG).show();
+                    }
                 }
 
                 if (disc.getText().toString().length() > 0){
